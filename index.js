@@ -31,6 +31,12 @@ async function run() {
       const courses = await courseCollection.find().toArray();
       res.send(courses);
     })
+    // add course
+    app.post('/course', async(req,res)=>{
+          const course = req.body;
+          const result = await courseCollection.insertOne(course);
+          res.send(result);
+        })
     // user roles data 
     app.post('/users-role', async(req,res)=>{
       const userRoles = req.body;
